@@ -10,15 +10,15 @@ import numpy as np
 from .segment_anything import sam_model_registry, SamPredictor
 
 # Global Variables
-GROUNDING_DINO_CONFIG_PATH = "/content/SegmaVisionPro/groundingsam/groundingdino/config/GroundingDINO_SwinT_OGC.py"
-GROUNDING_DINO_CHECKPOINT_PATH = "/content/SegmaVisionPro/groundingsam/weights/groundingdino_swint_ogc.pth"
+GROUNDING_DINO_CONFIG_PATH = "/content/segmaVisionPro/GroundingSam/groundingdino/config/GroundingDINO_SwinT_OGC.py"
+GROUNDING_DINO_CHECKPOINT_PATH = "/content/segmaVisionPro/GroundingSam/weights/groundingdino_swint_ogc.pth"
 DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 assert(os.path.isfile(GROUNDING_DINO_CONFIG_PATH)), "GroundingDINO config file not found!"
 assert(os.path.isfile(GROUNDING_DINO_CHECKPOINT_PATH)), "GroundingDINO checkpoint file not found!"
 grounding_dino_model = Model(model_config_path=GROUNDING_DINO_CONFIG_PATH, model_checkpoint_path=GROUNDING_DINO_CHECKPOINT_PATH)
 
 SAM_ENCODER_VERSION = "vit_h"
-SAM_CHECKPOINT_PATH = "/content/SegmaVisionPro/groundingsam/weights/sam_vit_h_4b8939.pth"
+SAM_CHECKPOINT_PATH = "/content/segmaVisionPro/GroundingSam/weights/sam_vit_h_4b8939.pth"
 assert(os.path.isfile(SAM_CHECKPOINT_PATH)), "SAM checkpoint file not found!"
 sam = sam_model_registry[SAM_ENCODER_VERSION](checkpoint=SAM_CHECKPOINT_PATH).to(device=DEVICE)
 sam_predictor = SamPredictor(sam)
@@ -76,6 +76,23 @@ class GroundingSam:
       self.annotations[image_name] = self.detections
     return self.detections
 
+
+  def get_detection_data(self):
+        # Create a structured dictionary based on `self.annotations`
+        detection_data = {}
+        
+        for image_name, detections in self.annotations.items():
+            labels = [self.classes[class_id] for class_id in detections.class_id]
+            bounding_boxes = detections.xyxy.tolist()  # Convert bounding boxes to a list format
+            
+            detection_data[image_name] = {
+                "labels": labels,
+                "bounding_boxes": bounding_boxes
+            }
+        
+        return detection_data
+
+        
   def annotate_images(self):
     plot_images = []
     plot_titles = []
