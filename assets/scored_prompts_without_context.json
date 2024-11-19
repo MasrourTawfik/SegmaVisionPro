@@ -1,0 +1,272 @@
+[
+    {
+        "image_name": "image3.jpg",
+        "prompt": "young man with hat on purple wall with mobile, looking to the camera",
+        "vocabulary_richness": 1.0,
+        "lexical_density": 0.8333333333333334,
+        "parse_tree_depth": 2.0,
+        "readability": 50.47,
+        "relevance": 0.17086125828895418
+    },
+    {
+        "image_name": "image3.jpg",
+        "prompt": "portrait of a young man with casual clothes over purple wall with thumb smartphone",
+        "vocabulary_richness": 1.0,
+        "lexical_density": 0.875,
+        "parse_tree_depth": 2.0,
+        "readability": 56.7,
+        "relevance": 0.17086125828895407
+    },
+    {
+        "image_name": "image3.jpg",
+        "prompt": "portrait of a casual guy with sunglasses using a mobile on violet wall",
+        "vocabulary_richness": 1.0,
+        "lexical_density": 0.8888888888888888,
+        "parse_tree_depth": 3.0,
+        "readability": 56.98,
+        "relevance": 0.16055744905595054
+    },
+    {
+        "image_name": "image3.jpg",
+        "prompt": "young casual bearded man wearing sunglasses using a smartphone",
+        "vocabulary_richness": 1.0,
+        "lexical_density": 0.8888888888888888,
+        "parse_tree_depth": 3.0,
+        "readability": 66.79,
+        "relevance": 0.13827858304571503
+    },
+    {
+        "image_name": "image3.jpg",
+        "prompt": "portrait of a man wearing hat and sunglasses looking worried over purple wall",
+        "vocabulary_richness": 1.0,
+        "lexical_density": 1.0,
+        "parse_tree_depth": 3.0,
+        "readability": 74.81,
+        "relevance": 0.11175810532130448
+    },
+    {
+        "image_name": "image3.jpg",
+        "prompt": "a man who is wearing a hat and a scarf and cell phone",
+        "vocabulary_richness": 1.0,
+        "lexical_density": 1.0,
+        "parse_tree_depth": 3.0,
+        "readability": 83.85,
+        "relevance": 0.10605147422253018
+    },
+    {
+        "image_name": "image3.jpg",
+        "prompt": "a person wearing a hat and sunglasses",
+        "vocabulary_richness": 1.0,
+        "lexical_density": 1.0,
+        "parse_tree_depth": 3.0,
+        "readability": 83.85,
+        "relevance": 0.07152869824258319
+    },
+    {
+        "image_name": "image3.jpg",
+        "prompt": "a man wearing a red hat with a pink top and a blue tie",
+        "vocabulary_richness": 1.0,
+        "lexical_density": 1.0,
+        "parse_tree_depth": 3.0,
+        "readability": 84.9,
+        "relevance": 0.07152869824258319
+    },
+    {
+        "image_name": "image3.jpg",
+        "prompt": "a man with white hair and black shirt holding two digital devices",
+        "vocabulary_richness": 1.0,
+        "lexical_density": 1.0,
+        "parse_tree_depth": 4.0,
+        "readability": 101.98,
+        "relevance": 0.05603229715611591
+    },
+    {
+        "image_name": "image3.jpg",
+        "prompt": "man with a beard using a mobile phone indoors",
+        "vocabulary_richness": 1.0,
+        "lexical_density": 1.0,
+        "parse_tree_depth": 4.0,
+        "readability": 102.53,
+        "relevance": 0.0560322971561159
+    },
+    {
+        "image_name": "image1.jpg",
+        "prompt": "image of a musician playing a guitar",
+        "vocabulary_richness": 0.8333333333333334,
+        "lexical_density": 0.8,
+        "parse_tree_depth": 2.0,
+        "readability": 18.44,
+        "relevance": 0.23154213763099904
+    },
+    {
+        "image_name": "image1.jpg",
+        "prompt": "music lessons for musicians how to play the piano",
+        "vocabulary_richness": 1.0,
+        "lexical_density": 1.0,
+        "parse_tree_depth": 3.0,
+        "readability": 19.1,
+        "relevance": 0.2009253031282864
+    },
+    {
+        "image_name": "image1.jpg",
+        "prompt": "people playing music on an electronic piano",
+        "vocabulary_richness": 1.0,
+        "lexical_density": 1.0,
+        "parse_tree_depth": 3.0,
+        "readability": 54.7,
+        "relevance": 0.19952963301062396
+    },
+    {
+        "image_name": "image1.jpg",
+        "prompt": "man playing piano in a recording booth",
+        "vocabulary_richness": 1.0,
+        "lexical_density": 1.0,
+        "parse_tree_depth": 3.0,
+        "readability": 54.7,
+        "relevance": 0.1896332448502732
+    },
+    {
+        "image_name": "image1.jpg",
+        "prompt": "two people playing guitars at a desk",
+        "vocabulary_richness": 1.0,
+        "lexical_density": 1.0,
+        "parse_tree_depth": 3.0,
+        "readability": 56.7,
+        "relevance": 0.16646983862838485
+    },
+    {
+        "image_name": "image1.jpg",
+        "prompt": "a person at a concert playing a piano",
+        "vocabulary_richness": 1.0,
+        "lexical_density": 1.0,
+        "parse_tree_depth": 3.0,
+        "readability": 56.7,
+        "relevance": 0.16646983862838485
+    },
+    {
+        "image_name": "image1.jpg",
+        "prompt": "a piano player playing piano with other people listening",
+        "vocabulary_richness": 1.0,
+        "lexical_density": 1.0,
+        "parse_tree_depth": 3.0,
+        "readability": 61.24,
+        "relevance": 0.11073347604266298
+    },
+    {
+        "image_name": "image1.jpg",
+        "prompt": "a man is playing music on a piano",
+        "vocabulary_richness": 1.0,
+        "lexical_density": 1.0,
+        "parse_tree_depth": 4.0,
+        "readability": 71.82,
+        "relevance": 0.09100624940961954
+    },
+    {
+        "image_name": "image1.jpg",
+        "prompt": "a piano playing during the day to the guitarist",
+        "vocabulary_richness": 1.0,
+        "lexical_density": 1.0,
+        "parse_tree_depth": 4.0,
+        "readability": 72.62,
+        "relevance": 0.05397247532464513
+    },
+    {
+        "image_name": "image1.jpg",
+        "prompt": "a man in black playing on a piano with a violin",
+        "vocabulary_richness": 1.0,
+        "lexical_density": 1.0,
+        "parse_tree_depth": 5.0,
+        "readability": 78.87,
+        "relevance": 0.04358211208510578
+    },
+    {
+        "image_name": "image2.jpg",
+        "prompt": "a man playing an acoustic guitar",
+        "vocabulary_richness": 1.0,
+        "lexical_density": 0.8333333333333334,
+        "parse_tree_depth": 2.0,
+        "readability": 59.75,
+        "relevance": 0.20817741613013163
+    },
+    {
+        "image_name": "image2.jpg",
+        "prompt": "a man playing the guitar",
+        "vocabulary_richness": 1.0,
+        "lexical_density": 1.0,
+        "parse_tree_depth": 3.0,
+        "readability": 72.62,
+        "relevance": 0.19704322953603837
+    },
+    {
+        "image_name": "image2.jpg",
+        "prompt": "a man with sunglasses and a black jacket playing a guitar",
+        "vocabulary_richness": 1.0,
+        "lexical_density": 1.0,
+        "parse_tree_depth": 3.0,
+        "readability": 75.5,
+        "relevance": 0.19086202477924127
+    },
+    {
+        "image_name": "image2.jpg",
+        "prompt": "a man in a black jacket playing a guitar",
+        "vocabulary_richness": 1.0,
+        "lexical_density": 1.0,
+        "parse_tree_depth": 3.0,
+        "readability": 78.87,
+        "relevance": 0.1696464310358192
+    },
+    {
+        "image_name": "image2.jpg",
+        "prompt": "a young man holds a guitar in his right hand",
+        "vocabulary_richness": 1.0,
+        "lexical_density": 1.0,
+        "parse_tree_depth": 4.0,
+        "readability": 83.32,
+        "relevance": 0.15120825122130263
+    },
+    {
+        "image_name": "image2.jpg",
+        "prompt": "a man in a turquoise shirt has a guitar",
+        "vocabulary_richness": 1.0,
+        "lexical_density": 1.0,
+        "parse_tree_depth": 4.0,
+        "readability": 84.9,
+        "relevance": 0.13431856583669363
+    },
+    {
+        "image_name": "image2.jpg",
+        "prompt": "a man in a guitar outfit holding two guitars",
+        "vocabulary_richness": 1.0,
+        "lexical_density": 1.0,
+        "parse_tree_depth": 4.0,
+        "readability": 89.9,
+        "relevance": 0.11562060263170855
+    },
+    {
+        "image_name": "image2.jpg",
+        "prompt": "a man in red shirt playing with a guitar",
+        "vocabulary_richness": 1.0,
+        "lexical_density": 1.0,
+        "parse_tree_depth": 4.0,
+        "readability": 94.3,
+        "relevance": 0.09841326345757573
+    },
+    {
+        "image_name": "image2.jpg",
+        "prompt": "a person that is on a piano",
+        "vocabulary_richness": 1.0,
+        "lexical_density": 1.0,
+        "parse_tree_depth": 4.0,
+        "readability": 94.3,
+        "relevance": 0.08976345546930031
+    },
+    {
+        "image_name": "image2.jpg",
+        "prompt": "a man singing with his guitar in front of a large group of people",
+        "vocabulary_richness": 1.0,
+        "lexical_density": 1.0,
+        "parse_tree_depth": 4.0,
+        "readability": 103.62,
+        "relevance": 0.08226101302747872
+    }
+]

@@ -1,0 +1,272 @@
+[
+    {
+        "image_name": "image2.jpg",
+        "prompt": "a man playing a guitar while looking at the instrument",
+        "vocabulary_richness": 1.0,
+        "lexical_density": 0.8,
+        "parse_tree_depth": 3.0,
+        "readability": 66.1,
+        "relevance": 0.2724512265870677
+    },
+    {
+        "image_name": "image2.jpg",
+        "prompt": "top 10 guitar mistakes on all time",
+        "vocabulary_richness": 1.0,
+        "lexical_density": 0.8571428571428571,
+        "parse_tree_depth": 3.0,
+        "readability": 69.79,
+        "relevance": 0.19704322953603837
+    },
+    {
+        "image_name": "image2.jpg",
+        "prompt": "man with guitar",
+        "vocabulary_richness": 1.0,
+        "lexical_density": 1.0,
+        "parse_tree_depth": 3.0,
+        "readability": 71.82,
+        "relevance": 0.18320075238871436
+    },
+    {
+        "image_name": "image2.jpg",
+        "prompt": "man playing on a guitar",
+        "vocabulary_richness": 1.0,
+        "lexical_density": 1.0,
+        "parse_tree_depth": 3.0,
+        "readability": 71.82,
+        "relevance": 0.1696464310358192
+    },
+    {
+        "image_name": "image2.jpg",
+        "prompt": "man holding a guitar while sitting against blue background",
+        "vocabulary_richness": 1.0,
+        "lexical_density": 1.0,
+        "parse_tree_depth": 3.0,
+        "readability": 72.62,
+        "relevance": 0.13494557098088492
+    },
+    {
+        "image_name": "image2.jpg",
+        "prompt": "man wearing a red cap playing guitar while in an arena",
+        "vocabulary_richness": 1.0,
+        "lexical_density": 1.0,
+        "parse_tree_depth": 4.0,
+        "readability": 73.85,
+        "relevance": 0.12728984435799995
+    },
+    {
+        "image_name": "image2.jpg",
+        "prompt": "a guitar player playing a song",
+        "vocabulary_richness": 1.0,
+        "lexical_density": 1.0,
+        "parse_tree_depth": 4.0,
+        "readability": 83.32,
+        "relevance": 0.11201419757256037
+    },
+    {
+        "image_name": "image2.jpg",
+        "prompt": "a man with a guitar holding a microphone",
+        "vocabulary_richness": 1.0,
+        "lexical_density": 1.0,
+        "parse_tree_depth": 4.0,
+        "readability": 89.52,
+        "relevance": 0.07637168425078487
+    },
+    {
+        "image_name": "image2.jpg",
+        "prompt": "a man playing a guitar by a riverbank",
+        "vocabulary_richness": 1.0,
+        "lexical_density": 1.0,
+        "parse_tree_depth": 5.0,
+        "readability": 90.99,
+        "relevance": 0.044711322481498346
+    },
+    {
+        "image_name": "image2.jpg",
+        "prompt": "a man is standing near a keyboard in a black and white photo",
+        "vocabulary_richness": 1.0,
+        "lexical_density": 1.0,
+        "parse_tree_depth": 5.0,
+        "readability": 103.04,
+        "relevance": 0.02917182114587977
+    },
+    {
+        "image_name": "image3.jpg",
+        "prompt": "a young man wearing a hat looking down at his phone",
+        "vocabulary_richness": 0.7777777777777778,
+        "lexical_density": 0.8333333333333334,
+        "parse_tree_depth": 2.0,
+        "readability": 23.43,
+        "relevance": 0.2012118142947521
+    },
+    {
+        "image_name": "image3.jpg",
+        "prompt": "a young man is surprised while using his cell phone",
+        "vocabulary_richness": 1.0,
+        "lexical_density": 0.8333333333333334,
+        "parse_tree_depth": 2.0,
+        "readability": 75.5,
+        "relevance": 0.12745936906025757
+    },
+    {
+        "image_name": "image3.jpg",
+        "prompt": "man with phone over purple wall sending the message",
+        "vocabulary_richness": 1.0,
+        "lexical_density": 1.0,
+        "parse_tree_depth": 2.0,
+        "readability": 78.25,
+        "relevance": 0.1046441787210362
+    },
+    {
+        "image_name": "image3.jpg",
+        "prompt": "young man in jeans shirt and hat using a smartphone",
+        "vocabulary_richness": 1.0,
+        "lexical_density": 1.0,
+        "parse_tree_depth": 3.0,
+        "readability": 86.71,
+        "relevance": 0.1046441787210362
+    },
+    {
+        "image_name": "image3.jpg",
+        "prompt": "caucasian caucasian man with beard over isolated isolated screaming while looking at a mobile",
+        "vocabulary_richness": 1.0,
+        "lexical_density": 1.0,
+        "parse_tree_depth": 3.0,
+        "readability": 88.0,
+        "relevance": 0.07994262261811756
+    },
+    {
+        "image_name": "image3.jpg",
+        "prompt": "a man wearing a cap and a dress shirt holds a cellphone in his",
+        "vocabulary_richness": 1.0,
+        "lexical_density": 1.0,
+        "parse_tree_depth": 3.0,
+        "readability": 95.17,
+        "relevance": 0.0698101085739778
+    },
+    {
+        "image_name": "image3.jpg",
+        "prompt": "a person wearing a baseball cap holding a cell phone",
+        "vocabulary_richness": 1.0,
+        "lexical_density": 1.0,
+        "parse_tree_depth": 3.0,
+        "readability": 95.69,
+        "relevance": 0.056579088560381206
+    },
+    {
+        "image_name": "image3.jpg",
+        "prompt": "a man in a red dress has a cell phone",
+        "vocabulary_richness": 1.0,
+        "lexical_density": 1.0,
+        "parse_tree_depth": 4.0,
+        "readability": 95.94,
+        "relevance": 0.049730267219536516
+    },
+    {
+        "image_name": "image3.jpg",
+        "prompt": "man holding up a phone in a hat and sunglasses",
+        "vocabulary_richness": 1.0,
+        "lexical_density": 1.0,
+        "parse_tree_depth": 4.0,
+        "readability": 112.09,
+        "relevance": 0.03516460918115334
+    },
+    {
+        "image_name": "image3.jpg",
+        "prompt": "a man with a blue hat looking in a camera mane",
+        "vocabulary_richness": 1.0,
+        "lexical_density": 1.0,
+        "parse_tree_depth": 5.0,
+        "readability": 112.09,
+        "relevance": 0.02917182114587977
+    },
+    {
+        "image_name": "image1.jpg",
+        "prompt": "a man is playing on an electronic keyboard",
+        "vocabulary_richness": 0.6666666666666666,
+        "lexical_density": 0.8333333333333334,
+        "parse_tree_depth": 2.0,
+        "readability": 32.56,
+        "relevance": 0.41776879244199855
+    },
+    {
+        "image_name": "image1.jpg",
+        "prompt": "person playing piano with guitar",
+        "vocabulary_richness": 0.8333333333333334,
+        "lexical_density": 1.0,
+        "parse_tree_depth": 3.0,
+        "readability": 46.61,
+        "relevance": 0.21377329977246154
+    },
+    {
+        "image_name": "image1.jpg",
+        "prompt": "view of hand on the harpsichord keyboard",
+        "vocabulary_richness": 1.0,
+        "lexical_density": 1.0,
+        "parse_tree_depth": 3.0,
+        "readability": 47.3,
+        "relevance": 0.18796047167157534
+    },
+    {
+        "image_name": "image1.jpg",
+        "prompt": "a person playing an music instrument on a piano",
+        "vocabulary_richness": 1.0,
+        "lexical_density": 1.0,
+        "parse_tree_depth": 3.0,
+        "readability": 52.87,
+        "relevance": 0.14868886828485764
+    },
+    {
+        "image_name": "image1.jpg",
+        "prompt": "a person is playing a piano while another is playing his piano",
+        "vocabulary_richness": 1.0,
+        "lexical_density": 1.0,
+        "parse_tree_depth": 3.0,
+        "readability": 61.24,
+        "relevance": 0.14013732503456913
+    },
+    {
+        "image_name": "image1.jpg",
+        "prompt": "a person sitting in front of a keyboard looking at a keyboard",
+        "vocabulary_richness": 1.0,
+        "lexical_density": 1.0,
+        "parse_tree_depth": 4.0,
+        "readability": 61.24,
+        "relevance": 0.11073347604266298
+    },
+    {
+        "image_name": "image1.jpg",
+        "prompt": "an instrument in a book with a guitar on a piano",
+        "vocabulary_richness": 1.0,
+        "lexical_density": 1.0,
+        "parse_tree_depth": 4.0,
+        "readability": 71.82,
+        "relevance": 0.08742982257856656
+    },
+    {
+        "image_name": "image1.jpg",
+        "prompt": "a person laying down playing an organ player",
+        "vocabulary_richness": 1.0,
+        "lexical_density": 1.0,
+        "parse_tree_depth": 4.0,
+        "readability": 72.62,
+        "relevance": 0.046353139720443214
+    },
+    {
+        "image_name": "image1.jpg",
+        "prompt": "an older man is playing at the piano",
+        "vocabulary_richness": 1.0,
+        "lexical_density": 1.0,
+        "parse_tree_depth": 5.0,
+        "readability": 74.81,
+        "relevance": 0.03926514470704329
+    },
+    {
+        "image_name": "image1.jpg",
+        "prompt": "a singer sits alone at a piano instrument being played",
+        "vocabulary_richness": 1.0,
+        "lexical_density": 1.0,
+        "parse_tree_depth": 5.0,
+        "readability": 78.87,
+        "relevance": 0.0
+    }
+]
