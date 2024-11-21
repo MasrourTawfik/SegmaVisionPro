@@ -31,7 +31,9 @@ def enhance_class_name(class_names: List[str]) -> List[str]:
       in class_names
   ]
 
-def include_new_class(class_names: List[str], new_class: List[str]) -> List[str]:
+# Function to replace base class detections with new classes
+# ------- base class=new class, replace !after! detections
+def annotate_new_class(class_names: List[str], new_class: List[str]) -> List[str]:
     return enhance_class_name(class_names) + enhance_class_name(new_class)
 
 
@@ -79,6 +81,7 @@ class GroundingSam:
             detections = detections[detections.class_id != None]
             self.images[image_name] = image
             self.detections[image_name] = detections
+            self.annotations[image_name] = detections
 
     def get_detections(self, BOX_TRESHOLD=0.35, TEXT_TRESHOLD=0.25, class_enhancer=enhance_class_name):
         if not self.detections:  # If detections haven't been calculated, do so
