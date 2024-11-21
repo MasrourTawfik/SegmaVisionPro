@@ -342,13 +342,6 @@ class AutomaticLabel(GroundingSam):
             self.annotations[image_name] = detections
     
     def save_new_annotations(self, output_path, approximation_percentage=0.75):
-        """
-        Save annotations in COCO format with only new classes.
-    
-        Args:
-            output_path (str): Path to save the COCO JSON file.
-            approximation_percentage (float): Percentage for polygon approximation for segmentation.
-        """
         # Initialize the COCO data structure
         coco_data = {
             "images": [],
@@ -407,29 +400,19 @@ class AutomaticLabel(GroundingSam):
         print(f"Annotations with new classes saved to {output_path}")
 
 
-  def _get_segmentation_from_mask(self, mask, approximation_percentage=0.75):
-      """
-      Convert a binary mask to COCO segmentation format (polygon).
-  
-      Args:
-          mask: Binary mask (numpy array).
-          approximation_percentage: Approximation for polygonal contours.
-  
-      Returns:
-          List of segmentation points in COCO polygon format.
-      """
-      from skimage.measure import approximate_polygon, find_contours
-  
-      contours = find_contours(mask, 0.5)
-      segmentation = []
-  
-      for contour in contours:
-          # Approximate the contour
-          contour = approximate_polygon(contour, tolerance=approximation_percentage)
-          if len(contour) < 6:  # Skip invalid polygons
-              continue
-          # Convert to COCO segmentation format
-          segmentation.append(contour.ravel().tolist())
-  
-      return segmentation
+    def _get_segmentation_from_mask(self, mask, approximation_percentage=0.75):
+        from skimage.measure import approximate_polygon, find_contours
+    
+        contours = find_contours(mask, 0.5)
+        segmentation = []
+    
+        for contour in contours:
+            # Approximate the contour
+            contour = approximate_polygon(contour, tolerance=approximation_percentage)
+            if len(contour) < 6:  # Skip invalid polygons
+                continue
+            # Convert to COCO segmentation format
+            segmentation.append(contour.ravel().tolist())
+    
+        return segmentation
     
