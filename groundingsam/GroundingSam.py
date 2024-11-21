@@ -339,11 +339,19 @@ class AutomaticLabel(GroundingSam):
             self.images[image_name] = image
             self.detections[image_name] = detections
             self.annotations[image_name] = detections
-
+    
     def save_as_pascal_voc_with_new_class(self, min_image_area_percentage=0.002, max_image_area_percentage=0.80, approximation_percentage=0.75):
         """
         Save annotations in Pascal VOC format using new classes.
         """
+        # Remap the annotations to use new classes
+        for image_name, detections in self.annotations.items():
+            detections.class_id = np.array([
+                self.new_classes[class_id] if class_id in range(len(self.new_classes)) else class_id
+                for class_id in detections.class_id
+            ])
+    
+        # Create and save the dataset using new class names
         dataset = sv.Dataset(
             classes=self.new_classes,  # Use new classes for saving
             images=self.images,
@@ -355,3 +363,4 @@ class AutomaticLabel(GroundingSam):
             max_image_area_percentage=max_image_area_percentage,
             approximation_percentage=approximation_percentage
         )
+
