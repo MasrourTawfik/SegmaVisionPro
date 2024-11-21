@@ -184,16 +184,49 @@ class GroundingSam:
 
 class AutomaticLabel(GroundingSam):
     def __init__(self, base_classes, new_classes=None, images_dir="./data/", annotations_dir="./annotations/", images_extensions=['jpg', 'jpeg', 'png']):
-        """
-        Initialize AutomaticLabel with base and new classes.
-        Detection is performed on base_classes, and annotation/saving is performed on new_classes.
-        """
-        self.base_classes = base_classes  # Classes used for detection
-        self.new_classes = new_classes or []  # Classes used for annotation and saving
-        self.classes = base_classes  # Start with base classes for detection
+        # Combine base classes with new classes
+        self.base_classes = base_classes  # Base classes for detection
+        self.new_classes = new_classes or base_classes  # New classes for annotation
+        self.classes = base_classes  # Default to base classes for detection
         
         # Initialize the parent class
         super().__init__(classes=self.base_classes, images_dir=images_dir, annotations_dir=annotations_dir, images_extensions=images_extensions)
+
+    def annotate_images(self):
+        plot_images = []
+        plot_titles = []
+
+        box_annotator = sv.BoxAnnotator()
+        mask_annotator = sv.MaskAnnotator()
+
+        # Use the new classes for annotation
+        classes_to_use = self.new_classes
+
+        for image_name, detections in self.detections.items():
+            image = self.images[image_name]
+            plot_images.append(image)
+            plot_titles.append(image_name)
+
+            labels = [
+                f"{classes_to_use[class_id]} {confidence:0.2f}"  # Use new classes for labels
+                for confidence, class_id in zip(detections.confidence, detections.class_id)
+            ]
+            annotated_image = mask_annotator.annotate(scene=image.copy(), detections=detections)
+            annotated_image = box_annotator.annotate(scene=annotated_image, detections=detections, labels=labels)
+            plot_images.append(annotated_image)
+            title = " ".join(set([
+                classes_to_use[class_id]  # Use new classes for titles
+                for class_id in detections.class_id
+            ]))
+            plot_titles.append(title)
+
+        sv.plot_images_grid(
+            images=plot_images,
+            titles=plot_titles,
+            grid_size=(len(self.detections), 2),
+            size=(2 * 4, len(self.detections) * 4)
+        )
+
 
     def _map_detections_to_new_classes(self, detections, base_to_new_mapping):
         """
