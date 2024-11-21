@@ -341,68 +341,68 @@ class AutomaticLabel(GroundingSam):
             self.detections[image_name] = detections
             self.annotations[image_name] = detections
     
-  def save_new_annotations(self, output_path, approximation_percentage=0.75):
-      """
-      Save annotations in COCO format with only new classes.
-  
-      Args:
-          output_path (str): Path to save the COCO JSON file.
-          approximation_percentage (float): Percentage for polygon approximation for segmentation.
-      """
-      # Initialize the COCO data structure
-      coco_data = {
-          "images": [],
-          "annotations": [],
-          "categories": []
-      }
-  
-      # Add new classes to categories
-      coco_data["categories"] = [
-          {"id": int(idx), "name": class_name, "supercategory": "none"}
-          for idx, class_name in enumerate(self.new_classes)
-      ]
-  
-      annotation_id = 0
-  
-      # Iterate over images and annotations
-      for image_id, (image_name, detections) in enumerate(self.annotations.items()):
-          image = self.images[image_name]
-          height, width, _ = image.shape
-  
-          # Add image metadata
-          coco_data["images"].append({
-              "id": int(image_id),
-              "file_name": image_name,
-              "width": int(width),
-              "height": int(height)
-          })
-  
-          # Iterate over detections and filter to only include new classes
-          for bbox, mask, class_id, confidence in zip(
-              detections.xyxy, detections.mask, detections.class_id, detections.confidence
-          ):
-              if class_id >= len(self.new_classes):  # Skip classes not in new_classes
-                  continue
-  
-              # Convert bounding box to COCO format [x, y, width, height]
-              x_min, y_min, x_max, y_max = bbox
-              coco_bbox = [float(x_min), float(y_min), float(x_max - x_min), float(y_max - y_min)]
-  
-              # Add annotation
-              coco_data["annotations"].append({
-                  "id": int(annotation_id),
-                  "image_id": int(image_id),
-                  "category_id": int(class_id),
-                  "bbox": coco_bbox,
-                  "area": float((x_max - x_min) * (y_max - y_min)),
-                  "iscrowd": 0,
-                  "segmentation": self._get_segmentation_from_mask(mask, approximation_percentage)
-              })
-              annotation_id += 1
-  
-      # Save the COCO annotations to a JSON file
-      with open(output_path, 'w') as f:
-          json.dump(coco_data, f, indent=4)
-  
-      print(f"Annotations with new classes saved to {output_path}")
+    def save_new_annotations(self, output_path, approximation_percentage=0.75):
+        """
+        Save annotations in COCO format with only new classes.
+    
+        Args:
+            output_path (str): Path to save the COCO JSON file.
+            approximation_percentage (float): Percentage for polygon approximation for segmentation.
+        """
+        # Initialize the COCO data structure
+        coco_data = {
+            "images": [],
+            "annotations": [],
+            "categories": []
+        }
+    
+        # Add new classes to categories
+        coco_data["categories"] = [
+            {"id": int(idx), "name": class_name, "supercategory": "none"}
+            for idx, class_name in enumerate(self.new_classes)
+        ]
+    
+        annotation_id = 0
+    
+        # Iterate over images and annotations
+        for image_id, (image_name, detections) in enumerate(self.annotations.items()):
+            image = self.images[image_name]
+            height, width, _ = image.shape
+    
+            # Add image metadata
+            coco_data["images"].append({
+                "id": int(image_id),
+                "file_name": image_name,
+                "width": int(width),
+                "height": int(height)
+            })
+    
+            # Iterate over detections and filter to only include new classes
+            for bbox, mask, class_id, confidence in zip(
+                detections.xyxy, detections.mask, detections.class_id, detections.confidence
+            ):
+                if class_id >= len(self.new_classes):  # Skip classes not in new_classes
+                    continue
+    
+                # Convert bounding box to COCO format [x, y, width, height]
+                x_min, y_min, x_max, y_max = bbox
+                coco_bbox = [float(x_min), float(y_min), float(x_max - x_min), float(y_max - y_min)]
+    
+                # Add annotation
+                coco_data["annotations"].append({
+                    "id": int(annotation_id),
+                    "image_id": int(image_id),
+                    "category_id": int(class_id),
+                    "bbox": coco_bbox,
+                    "area": float((x_max - x_min) * (y_max - y_min)),
+                    "iscrowd": 0,
+                    "segmentation": self._get_segmentation_from_mask(mask, approximation_percentage)
+                })
+                annotation_id += 1
+    
+        # Save the COCO annotations to a JSON file
+        with open(output_path, 'w') as f:
+            json.dump(coco_data, f, indent=4)
+    
+        print(f"Annotations with new classes saved to {output_path}")
   
