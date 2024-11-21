@@ -5,6 +5,7 @@ from typing import List
 import cv2
 from tqdm.notebook import tqdm
 from .groundingdino.util.inference import Model
+import json
 
 import numpy as np
 from .segment_anything import sam_model_registry, SamPredictor
@@ -340,14 +341,7 @@ class AutomaticLabel(GroundingSam):
             self.detections[image_name] = detections
             self.annotations[image_name] = detections
     
-     def save_as_coco_with_new_class(self, output_path, approximation_percentage=0.75):
-      """
-      Save annotations in COCO format using only new classes.
-  
-      Args:
-          output_path: Path to save the COCO JSON file.
-          approximation_percentage: Percentage for polygon approximation for segmentation.
-      """
+    def save_as_coco_with_new_class(self, output_path, approximation_percentage=0.75):
       coco_data = {
           "images": [],
           "annotations": [],
@@ -398,19 +392,10 @@ class AutomaticLabel(GroundingSam):
               })
               annotation_id += 1
   
-      # Save to JSON
       with open(output_path, 'w') as f:
           json.dump(coco_data, f, indent=4)
   
   def _get_segmentation_from_mask(self, mask, approximation_percentage=0.75):
-      """
-      Convert a binary mask to COCO segmentation format (polygon).
-      Args:
-          mask: Binary mask (numpy array).
-          approximation_percentage: Approximation for polygonal contours.
-      Returns:
-          List of segmentation points in COCO polygon format.
-      """
       from skimage.measure import approximate_polygon, find_contours
   
       contours = find_contours(mask, 0.5)
