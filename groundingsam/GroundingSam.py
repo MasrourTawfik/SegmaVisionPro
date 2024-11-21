@@ -198,19 +198,21 @@ class AutomaticLabel(GroundingSam):
     def _map_detections_to_new_classes(self, detections, base_to_new_mapping):
         """
         Map detections from base classes to new classes based on a mapping.
-        
+    
         Args:
-            detections: Original detections.
+            detections: A Detections object with attributes `class_id` (array).
             base_to_new_mapping: Dictionary mapping base class indices to new class indices.
-        
+    
         Returns:
-            Updated detections with new class annotations.
+            Updated Detections object with remapped class IDs.
         """
-        for detection in detections:
-            class_id = detection.class_id
-            if class_id in base_to_new_mapping:
-                detection.class_id = base_to_new_mapping[class_id]
+        # Update class IDs based on the mapping
+        detections.class_id = np.array([
+            base_to_new_mapping.get(class_id, class_id)  # Map or keep original
+            for class_id in detections.class_id
+        ])
         return detections
+
 
     def _calculate_detections(self, BOX_TRESHOLD=0.35, TEXT_TRESHOLD=0.25, class_enhancer=enhance_class_name):
         """
