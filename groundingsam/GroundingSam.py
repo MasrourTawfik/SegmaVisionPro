@@ -405,4 +405,31 @@ class AutomaticLabel(GroundingSam):
             json.dump(coco_data, f, indent=4)
     
         print(f"Annotations with new classes saved to {output_path}")
+
+
+  def _get_segmentation_from_mask(self, mask, approximation_percentage=0.75):
+      """
+      Convert a binary mask to COCO segmentation format (polygon).
   
+      Args:
+          mask: Binary mask (numpy array).
+          approximation_percentage: Approximation for polygonal contours.
+  
+      Returns:
+          List of segmentation points in COCO polygon format.
+      """
+      from skimage.measure import approximate_polygon, find_contours
+  
+      contours = find_contours(mask, 0.5)
+      segmentation = []
+  
+      for contour in contours:
+          # Approximate the contour
+          contour = approximate_polygon(contour, tolerance=approximation_percentage)
+          if len(contour) < 6:  # Skip invalid polygons
+              continue
+          # Convert to COCO segmentation format
+          segmentation.append(contour.ravel().tolist())
+  
+      return segmentation
+    
