@@ -228,6 +228,65 @@ class AutomaticLabel(GroundingSam):
         )
 
 
+    def get_masks(self, BOX_TRESHOLD=0.35, TEXT_TRESHOLD=0.25, class_enhancer=enhance_class_name):
+        if not self.detections:  # If detections haven't been calculated, do so
+            self._calculate_detections(BOX_TRESHOLD, TEXT_TRESHOLD, class_enhancer)
+        
+        # Prepare the mapping from base classes to new classes
+        base_to_new_mapping = {i: i for i in range(len(self.base_classes))}  # Default mapping
+        if self.new_classes:
+            base_to_new_mapping = {
+                base_idx: new_idx
+                for base_idx, new_idx in zip(range(len(self.base_classes)), range(len(self.new_classes)))
+            }
+    
+        # Apply the class mapping to detections
+        for image_name, detections in self.detections.items():
+            # Map detections to new classes
+            detections = self._map_detections_to_new_classes(detections, base_to_new_mapping)
+            
+            # Generate masks
+            image = self.images[image_name]
+            detections.mask = segment(
+                sam_predictor=sam_predictor,
+                image=cv2.cvtColor(image, cv2.COLOR_BGR2RGB),
+                xyxy=detections.xyxy
+            )
+            self.annotations[image_name] = detections
+        
+        # Plotting logic
+        plot_images = []
+        plot_titles = []
+        
+        box_annotator = sv.BoxAnnotator()
+        mask_annotator = sv.MaskAnnotator()
+        
+        for image_name, detections in self.annotations.items():
+            image = self.images[image_name]
+            plot_images.append(image)
+            plot_titles.append(image_name)
+        
+            labels = [
+                f"{self.new_classes[class_id]} {confidence:0.2f}"  # Use new classes for labels
+                for _, _, confidence, class_id, _ in detections
+            ]
+            annotated_image = mask_annotator.annotate(scene=image.copy(), detections=detections)
+            annotated_image = box_annotator.annotate(scene=annotated_image, detections=detections, labels=labels)
+            plot_images.append(annotated_image)
+            title = " ".join(set([
+                self.new_classes[class_id]  # Use new classes for titles
+                for class_id in detections.class_id
+            ]))
+            plot_titles.append(title)
+        
+        sv.plot_images_grid(
+            images=plot_images,
+            titles=plot_titles,
+            grid_size=(len(self.annotations), 2),
+            size=(2 * 4, len(self.annotations) * 4)
+        )
+
+  
     def _map_detections_to_new_classes(self, detections, base_to_new_mapping):
         """
         Map detections from base classes to new classes based on a mapping.
