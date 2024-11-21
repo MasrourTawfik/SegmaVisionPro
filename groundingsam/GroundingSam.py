@@ -340,27 +340,89 @@ class AutomaticLabel(GroundingSam):
             self.detections[image_name] = detections
             self.annotations[image_name] = detections
     
-    def save_as_pascal_voc_with_new_class(self, min_image_area_percentage=0.002, max_image_area_percentage=0.80, approximation_percentage=0.75):
-        """
-        Save annotations in Pascal VOC format using new classes.
-        """
-        # Remap the annotations to use new classes
-        for image_name, detections in self.annotations.items():
-            detections.class_id = np.array([
-                self.new_classes[class_id] if class_id in range(len(self.new_classes)) else class_id
-                for class_id in detections.class_id
-            ])
-    
-        # Create and save the dataset using new class names
-        dataset = sv.Dataset(
-            classes=self.new_classes,  # Use new classes for saving
-            images=self.images,
-            annotations=self.annotations
-        )
-        dataset.as_pascal_voc(
-            annotations_directory_path=self.annotations_dir,
-            min_image_area_percentage=min_image_area_percentage,
-            max_image_area_percentage=max_image_area_percentage,
-            approximation_percentage=approximation_percentage
-        )
+     def save_as_coco_with_new_class(self, output_path, approximation_percentage=0.75):
+      """
+      Save annotations in COCO format using only new classes.
+  
+      Args:
+          output_path: Path to save the COCO JSON file.
+          approximation_percentage: Percentage for polygon approximation for segmentation.
+      """
+      coco_data = {
+          "images": [],
+          "annotations": [],
+          "categories": []
+      }
+  
+      # Add new classes to categories
+      coco_data["categories"] = [
+          {"id": idx, "name": class_name, "supercategory": "none"}
+          for idx, class_name in enumerate(self.new_classes)
+      ]
+  
+      annotation_id = 0
+  
+      # Iterate over images and annotations
+      for image_id, (image_name, detections) in enumerate(self.annotations.items()):
+          image = self.images[image_name]
+          height, width, _ = image.shape
+  
+          # Add image metadata
+          coco_data["images"].append({
+              "id": image_id,
+              "file_name": image_name,
+              "width": width,
+              "height": height
+          })
+  
+          # Iterate over detections and only include new classes
+          for bbox, mask, class_id, confidence in zip(
+              detections.xyxy, detections.mask, detections.class_id, detections.confidence
+          ):
+              if class_id >= len(self.new_classes):  # Skip old classes
+                  continue
+  
+              # Bounding box in COCO format: [x, y, width, height]
+              x_min, y_min, x_max, y_max = bbox
+              coco_bbox = [float(x_min), float(y_min), float(x_max - x_min), float(y_max - y_min)]
+  
+              # Add annotation
+              coco_data["annotations"].append({
+                  "id": annotation_id,
+                  "image_id": image_id,
+                  "category_id": class_id,
+                  "bbox": coco_bbox,
+                  "area": float((x_max - x_min) * (y_max - y_min)),
+                  "iscrowd": 0,
+                  "segmentation": self._get_segmentation_from_mask(mask, approximation_percentage)
+              })
+              annotation_id += 1
+  
+      # Save to JSON
+      with open(output_path, 'w') as f:
+          json.dump(coco_data, f, indent=4)
+  
+  def _get_segmentation_from_mask(self, mask, approximation_percentage=0.75):
+      """
+      Convert a binary mask to COCO segmentation format (polygon).
+      Args:
+          mask: Binary mask (numpy array).
+          approximation_percentage: Approximation for polygonal contours.
+      Returns:
+          List of segmentation points in COCO polygon format.
+      """
+      from skimage.measure import approximate_polygon, find_contours
+  
+      contours = find_contours(mask, 0.5)
+      segmentation = []
+  
+      for contour in contours:
+          # Approximate the contour
+          contour = approximate_polygon(contour, tolerance=approximation_percentage)
+          if len(contour) < 6:  # Skip invalid polygons
+              continue
+          # Convert to COCO segmentation format
+          segmentation.append(contour.ravel().tolist())
+  
+      return segmentation
 
